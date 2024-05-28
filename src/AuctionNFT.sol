@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
@@ -19,11 +19,9 @@ contract AuctionNFT is ERC721URIStorage {
     error ONLY_OWNER();
     error NOT_MINTING_ADDRESS();
 
-    constructor(address _mintingAddress, string memory _winnerImageURI, string memory _participantImageURI) ERC721("losslessNFT", "LAU") {
+    constructor(address _mintingAddress) ERC721("losslessNFT", "LAU") {
         owner = msg.sender;
         mintingAddress = _mintingAddress;
-        winnerImageURI = _winnerImageURI;
-        participantImageURI = _participantImageURI;
     }
 
     function winnerTokenURI(uint256 _aunctionId) public view returns (string memory) {
