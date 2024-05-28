@@ -2,7 +2,6 @@
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
-import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Base64.sol";
 
@@ -13,8 +12,7 @@ contract AuctionNFT is ERC721URIStorage {
     address mintingAddress;
 
     using Strings for uint256;
-    using Counters for Counters.Counter;
-    Counters.Counter private _tokenIds;
+    uint256 private tokenIds;
 
     mapping(uint256 => uint256) public tokenIdToLevels;
 
@@ -63,11 +61,12 @@ contract AuctionNFT is ERC721URIStorage {
         
         string memory tokenURI = winnerTokenURI(_aunctionId);
 
-        _tokenIds.increment();
-        uint256 newItemId = _tokenIds.current();
+        uint256 newItemId = tokenIds + 1;
 
         _safeMint(minto, newItemId);
         _setTokenURI(newItemId, tokenURI);
+
+        tokenIds++;
     }
 
     function mintParticipantNFT(uint256 _aunctionId, address minto) public {
@@ -75,11 +74,12 @@ contract AuctionNFT is ERC721URIStorage {
 
         string memory tokenURI = particantTokenURI(_aunctionId);
 
-        _tokenIds.increment();
-        uint256 newItemId = _tokenIds.current();
+        uint256 newItemId = tokenIds + 1;
 
         _safeMint(minto, newItemId);
         _setTokenURI(newItemId, tokenURI);
+
+        tokenIds++;
     }
 
     function updateWinnerImageURI(string memory _winnerImageURI) external {

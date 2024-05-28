@@ -1,0 +1,8 @@
+Verified new
+Authorization Address: 
+AuctionNFT Address: 
+Auction Address: 
+
+
+Verify from script
+forge script script/Deploy.s.sol:Deploy --rpc-url $RPC_URL --broadcast --etherscan-api-key $ETHERSCAN_KEY --verify -vvvv

@@ -1,0 +1,688 @@
+[
+    {
+        "type": "constructor",
+        "inputs": [
+            {
+                "name": "_authorization",
+                "type": "address",
+                "internalType": "address"
+            },
+            {
+                "name": "_aunctionNFT",
+                "type": "address",
+                "internalType": "address"
+            },
+            {
+                "name": "_teamWallet",
+                "type": "address",
+                "internalType": "address"
+            },
+            {
+                "name": "link",
+                "type": "address",
+                "internalType": "contract LinkTokenInterface"
+            },
+            {
+                "name": "registrar",
+                "type": "address",
+                "internalType": "contract IAutomationRegistrarInterface"
+            },
+            {
+                "name": "registry",
+                "type": "address",
+                "internalType": "contract IAutomationRegistryInterface"
+            },
+            {
+                "name": "_adminEmail",
+                "type": "string",
+                "internalType": "string"
+            },
+            {
+                "name": "_gasLimit",
+                "type": "uint32",
+                "internalType": "uint32"
+            },
+            {
+                "name": "_amount",
+                "type": "uint96",
+                "internalType": "uint96"
+            },
+            {
+                "name": "_adminAddress",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "approveRegistrar",
+        "inputs": [
+            {
+                "name": "_amount",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "bid",
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "highestBidder_",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "stateMutability": "payable"
+    },
+    {
+        "type": "function",
+        "name": "cancelAuction",
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "changeAunctionProofNFT",
+        "inputs": [
+            {
+                "name": "_aunctionNFTAddress",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "changeTeamWallet",
+        "inputs": [
+            {
+                "name": "_teamWallet",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "checkUpkeep",
+        "inputs": [
+            {
+                "name": "checkData",
+                "type": "bytes",
+                "internalType": "bytes"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "upkeepNeeded",
+                "type": "bool",
+                "internalType": "bool"
+            },
+            {
+                "name": "performData",
+                "type": "bytes",
+                "internalType": "bytes"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "claimAuctionParticipantNFT",
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "claimAuctionWinnerNFT",
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "createAuction",
+        "inputs": [
+            {
+                "name": "_startingTime",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "name": "_endingTime",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "name": "_startingBid",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "name": "_nftTokenId",
+                "type": "uint256",
+                "internalType": "uint256"
+            },
+            {
+                "name": "_nftContractAddress",
+                "type": "address",
+                "internalType": "address"
+            },
+            {
+                "name": "_imageURI",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "endAuctionManual",
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "getAllAuction",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "",
+                "type": "tuple[]",
+                "internalType": "struct AuctionLibrary.AuctionDetails[]",
+                "components": [
+                    {
+                        "name": "auctionCreator",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "nftContractAddress",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "hightestBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "previousBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "startingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "endingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "nftTokenId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionCreatedTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "currentBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "previousBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "minValidBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "lastInteractor",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "keeperId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "imageURI",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "ended",
+                        "type": "bool",
+                        "internalType": "bool"
+                    }
+                ]
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getAuctionById",
+        "inputs": [
+            {
+                "name": "_aunctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "tuple",
+                "internalType": "struct AuctionLibrary.AuctionDetails",
+                "components": [
+                    {
+                        "name": "auctionCreator",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "nftContractAddress",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "hightestBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "previousBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "startingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "endingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "nftTokenId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionCreatedTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "currentBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "previousBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "minValidBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "lastInteractor",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "keeperId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "imageURI",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "ended",
+                        "type": "bool",
+                        "internalType": "bool"
+                    }
+                ]
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getAunctionBidder",
+        "inputs": [
+            {
+                "name": "_auctionId",
+                "type": "uint256",
+                "internalType": "uint256"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "address[]",
+                "internalType": "address[]"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getUserAuctionCreated",
+        "inputs": [
+            {
+                "name": "_userAddress",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "tuple[]",
+                "internalType": "struct AuctionLibrary.AuctionDetails[]",
+                "components": [
+                    {
+                        "name": "auctionCreator",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "nftContractAddress",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "hightestBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "previousBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "startingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "endingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "nftTokenId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionCreatedTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "currentBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "previousBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "minValidBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "lastInteractor",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "keeperId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "imageURI",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "ended",
+                        "type": "bool",
+                        "internalType": "bool"
+                    }
+                ]
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getUserAuctionParticipated",
+        "inputs": [
+            {
+                "name": "_userAddress",
+                "type": "address",
+                "internalType": "address"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "tuple[]",
+                "internalType": "struct AuctionLibrary.AuctionDetails[]",
+                "components": [
+                    {
+                        "name": "auctionCreator",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "nftContractAddress",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "hightestBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "previousBidder",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "startingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "endingTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "nftTokenId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "auctionCreatedTime",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "currentBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "previousBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "minValidBid",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "lastInteractor",
+                        "type": "address",
+                        "internalType": "address"
+                    },
+                    {
+                        "name": "keeperId",
+                        "type": "uint256",
+                        "internalType": "uint256"
+                    },
+                    {
+                        "name": "imageURI",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "ended",
+                        "type": "bool",
+                        "internalType": "bool"
+                    }
+                ]
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "performUpkeep",
+        "inputs": [
+            {
+                "name": "performData",
+                "type": "bytes",
+                "internalType": "bytes"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    },
+    {
+        "type": "function",
+        "name": "updateAutomationRegParams",
+        "inputs": [
+            {
+                "name": "_email",
+                "type": "string",
+                "internalType": "string"
+            },
+            {
+                "name": "_gasLimit",
+                "type": "uint32",
+                "internalType": "uint32"
+            },
+            {
+                "name": "_adminAddress",
+                "type": "address",
+                "internalType": "address"
+            },
+            {
+                "name": "_amount",
+                "type": "uint96",
+                "internalType": "uint96"
+            }
+        ],
+        "outputs": [],
+        "stateMutability": "nonpayable"
+    }
+]
