@@ -57,29 +57,33 @@ contract Auction is AutomationCompatibleInterface {
         AuctionLibrary.createAuction(_startingTime, _endingTime, _startingBid, _nftTokenId, _nftContractAddress, _imageURI, layout);
     }
 
-    function bid(uint _auctionId) external onlyRegistered payable returns (address highestBidder_) {
+    function bid(uint _auctionId) external onlyRegistered  payable returns (address highestBidder_) {
          highestBidder_ = AuctionLibrary.bid(_auctionId, layout);
     }
 
-    function getAllAuction() external onlyRegistered view returns (AuctionLibrary.AuctionDetails[] memory){
+    function getAllAuction() external view returns (AuctionLibrary.AuctionDetails[] memory){
         return AuctionLibrary.getAllAuction(layout);
     }
 
-    function getUserAuctionCreated(address _userAddress) external onlyRegistered view returns (AuctionLibrary.AuctionDetails[] memory){
+    function getUserAuctionCreated(address _userAddress) external  view returns (AuctionLibrary.AuctionDetails[] memory){
         return AuctionLibrary.getUserAuctionCreated(_userAddress, layout);
     }
 
-    function getUserAuctionParticipated(address _userAddress) external onlyRegistered view returns (AuctionLibrary.AuctionDetails[] memory){
+    function getUserAuctionParticipated(address _userAddress) external  view returns (AuctionLibrary.AuctionDetails[] memory){
         return AuctionLibrary.getUserAuctionParticipated(_userAddress, layout);
     }
 
-    function getAunctionBidder(uint256 _auctionId) external onlyRegistered view returns (address[] memory){
+    function getAunctionBidder(uint256 _auctionId) external view returns (address[] memory){
         return AuctionLibrary.getAunctionBidder(_auctionId, layout);
     }
 
-    function getAuctionById(uint256 _aunctionId) external onlyRegistered view returns (AuctionLibrary.AuctionDetails memory){
+    function getAuctionById(uint256 _aunctionId) external view returns (AuctionLibrary.AuctionDetails memory){
         return AuctionLibrary.getAuctionById(_aunctionId, layout);
     }
+
+    function getUserAuctionSales(address _userAddress) external view returns(uint256){
+        return AuctionLibrary.getUserAuctionSales(_userAddress, layout);
+    } 
 
     function updateAutomationRegParams(string memory _email, uint32 _gasLimit, address _adminAddress, uint96 _amount) external {
         ChainlinkLibrary.updateAutomationRegParams(_email, _gasLimit, _adminAddress, _amount, layout);
@@ -101,15 +105,15 @@ contract Auction is AutomationCompatibleInterface {
        (upkeepNeeded, performData)= ChainlinkLibrary.checkUpkeep(checkData, layout);
     }
 
-    function claimAuctionWinnerNFT(uint256 _auctionId) external onlyRegistered {
+    function claimAuctionWinnerNFT(uint256 _auctionId) external onlyRegistered  {
         AuctionLibrary.claimAuctionWinnerNFT(_auctionId, layout);
     }
 
-    function claimAuctionParticipantNFT(uint256 _auctionId) external onlyRegistered {
+    function claimAuctionParticipantNFT(uint256 _auctionId) external onlyRegistered  {
         AuctionLibrary.claimAuctionParticipantNFT(_auctionId, layout);
     }
 
-    function cancelAuction(uint256 _auctionId) external onlyRegistered {
+    function cancelAuction(uint256 _auctionId) external onlyRegistered  {
         AuctionLibrary.cancelAuction(_auctionId, layout);
     }
 

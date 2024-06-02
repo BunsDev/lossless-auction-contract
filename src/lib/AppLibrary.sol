@@ -32,6 +32,8 @@ library AppLibrary {
 
         mapping (address => uint256[]) userAuctionsCreated;
 
+        mapping (address => uint256) usersales;
+
         address teamWallet;
 
         mapping(uint => mapping(address => bool)) aunctionWinnerNFTClaim;

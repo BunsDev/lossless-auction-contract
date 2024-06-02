@@ -34,7 +34,6 @@ library ChainlinkLibrary {
     error ONLY_OWNER();
 
     function createAutomationKeeper(uint256 _auctionId, string memory _name, AppLibrary.Layout storage layout) external returns (uint256) {
-        if(msg.sender != layout.owner)revert ONLY_OWNER();
 
         RegistrationParams memory _regParam = layout.chainlinkRegParams;
 
@@ -54,20 +53,31 @@ library ChainlinkLibrary {
     }
 
     function approveRegistrar(uint256 _amount, AppLibrary.Layout storage layout) external {
+        if(msg.sender != layout.owner)revert ONLY_OWNER();
+        
         layout.i_link.approve(address(layout.i_registrar), _amount);
     }
 
     function updateAutomationRegParams(string memory _email, uint32 _gasLimit, address _adminAddress, uint96 _amount, AppLibrary.Layout storage layout) external {
+        if(msg.sender != layout.owner)revert ONLY_OWNER();
+        
         RegistrationParams storage params = layout.chainlinkRegParams;
+        
         params.encryptedEmail = bytes(_email);
+        
         params.gasLimit = _gasLimit;
+        
         params.adminAddress = _adminAddress;
+        
         params.amount = _amount;
     }
 
     function checkUpkeep( bytes calldata checkData, AppLibrary.Layout storage layout) external view returns (bool upkeepNeeded, bytes memory performData){
+        
         AuctionLibrary.AuctionDetails storage ad = layout.auctions[checkData.bytesToUint()];
+        
         upkeepNeeded = block.timestamp > ad.endingTime && !ad.ended;
+        
         performData = checkData; 
     }
 

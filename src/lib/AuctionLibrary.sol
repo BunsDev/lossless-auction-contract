@@ -242,6 +242,10 @@ library AuctionLibrary {
         return layout.auctions[_aunctionId];
     }
 
+    function getUserAuctionSales(address _userAddress, AppLibrary.Layout storage layout) external view returns (uint256){
+        return layout.usersales[_userAddress];
+    } 
+
     function finalizeAuction(uint256 _auctionId, AppLibrary.Layout storage layout) public {
 
         AuctionLibrary.AuctionDetails storage ad = layout.auctions[_auctionId];
@@ -258,6 +262,8 @@ library AuctionLibrary {
                 IERC721(ad.nftContractAddress).transferFrom(address(this), ad.hightestBidder, ad.nftTokenId);
 
                 uint _nftValue = ad.currentBid * 90 /100;
+
+                layout.usersales[ad.auctionCreator] += _nftValue;
 
                 payable(ad.auctionCreator).transfer(_nftValue);
 
