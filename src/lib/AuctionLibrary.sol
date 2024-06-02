@@ -18,6 +18,10 @@ library AuctionLibrary {
 
         address nftContractAddress;
 
+        string name;
+
+        string description;
+
         address hightestBidder;
 
         address previousBidder;
@@ -73,7 +77,7 @@ library AuctionLibrary {
     event AuctionBade(uint256 eventAuctionId, address indexed eventBidderAddress, uint256 eventAmount);
     event AuctionWon(uint256 eventAuctionId, address indexed eventWinnerAddress);
 
-    function createAuction(uint _startingTime, uint _endingTime, uint _startingBid, uint _nftTokenId, address _nftContractAddress, string memory _imageURI, AppLibrary.Layout storage layout) external  {
+    function createAuction(uint _startingTime, uint _endingTime, uint _startingBid, uint _nftTokenId, address _nftContractAddress, string memory _imageURI, string memory _name, string memory _description, AppLibrary.Layout storage layout) external  {
 
         // checking user inputs
         if (_endingTime - _startingTime == 0) revert ZERO_DURATION_NOT_PERMITTED();
@@ -110,6 +114,10 @@ library AuctionLibrary {
         ad.auctionCreatedTime = block.timestamp;
 
         ad.imageURI = _imageURI;
+
+        ad.name = _name;
+
+        ad.description = _description;
         
         uint _keeperId = ChainlinkLibrary.createAutomationKeeper(ad.auctionId, Strings.toString(ad.auctionId), layout);
 

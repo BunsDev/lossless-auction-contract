@@ -53,8 +53,8 @@ contract Auction is AutomationCompatibleInterface {
         _;
     }
 
-    function createAuction(uint _startingTime, uint _endingTime, uint _startingBid, uint _nftTokenId, address _nftContractAddress, string memory _imageURI) external onlyRegistered {
-        AuctionLibrary.createAuction(_startingTime, _endingTime, _startingBid, _nftTokenId, _nftContractAddress, _imageURI, layout);
+    function createAuction(uint _startingTime, uint _endingTime, uint _startingBid, uint _nftTokenId, address _nftContractAddress, string memory _imageURI, string memory _name, string memory _description) external onlyRegistered {
+        AuctionLibrary.createAuction(_startingTime, _endingTime, _startingBid, _nftTokenId, _nftContractAddress, _imageURI, _name, _description, layout);
     }
 
     function bid(uint _auctionId) external onlyRegistered  payable returns (address highestBidder_) {
