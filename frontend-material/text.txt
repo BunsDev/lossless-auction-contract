@@ -1,7 +1,7 @@
 Verified Contracts
-Authorization Address: 0x1564a0F9B5d0bB9150675f79fbB93947c1E4B0DB
-AuctionNFT Address: 0x9E042eD11b079100be7a9323731b1f1b83b9D0B3
-Auction Address: 0xA06FB53feAF9183d8430Ce56C3bba059C1308c91
+Authorization Address: 0x8aFD4dBDD1718f5D0a18cfC3DA4176b486Cef9E8
+AuctionNFT Address: 0x814A011Fa5cA6eab7b140ac77f7A96Da9c52B78c
+Auction Address: 0xE4Eb390A187910672d5835C9CbA1B474f87AB5d1
 
 Verify from script
 forge script script/Deploy.s.sol:Deploy --rpc-url $RPC_URL --broadcast --etherscan-api-key $ETHERSCAN_KEY --verify -vvvv

@@ -69,7 +69,9 @@ library AuctionLibrary {
     error WINNER_NFT_ALREADY_CLAIMED();
     error PARTICIPANT_NFT_ALREADY_CLAIMED();
 
-    event HighestBidder(address indexed eventBidderAddress);
+    event AuctionCreated(uint256 eventAuctionId, address indexed eventCreatorAddress);
+    event AuctionBade(uint256 eventAuctionId, address indexed eventBidderAddress, uint256 eventAmount);
+    event AuctionWon(uint256 eventAuctionId, address indexed eventWinnerAddress);
 
     function createAuction(uint _startingTime, uint _endingTime, uint _startingBid, uint _nftTokenId, address _nftContractAddress, string memory _imageURI, AppLibrary.Layout storage layout) external  {
 
@@ -119,6 +121,8 @@ library AuctionLibrary {
 
         // incrementing auctionCount
         layout.auctionCount++;
+
+        emit AuctionCreated(ad.auctionId, ad.nftContractAddress);
     }
 
     function bid(uint _auctionId, AppLibrary.Layout storage layout) external returns (address highestBidder_) {
@@ -157,6 +161,8 @@ library AuctionLibrary {
 
             addToAuctionParticipant(_auctionId, msg.sender, layout);
 
+            emit AuctionBade(_auctionId, msg.sender, msg.value);
+
             return highestBidder_;
 
         } else {
@@ -176,6 +182,8 @@ library AuctionLibrary {
             layout.userAuctionsParticipation[msg.sender].push(_auctionId);
 
             addToAuctionParticipant(_auctionId, msg.sender, layout);
+
+            emit AuctionBade(_auctionId, msg.sender, msg.value);
 
             return highestBidder_;
         }
@@ -267,7 +275,7 @@ library AuctionLibrary {
 
                 payable(ad.auctionCreator).transfer(_nftValue);
 
-                emit HighestBidder(ad.hightestBidder);
+                emit AuctionWon(_auctionId, ad.hightestBidder);
             }
         }
     }
