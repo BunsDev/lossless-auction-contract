@@ -38,7 +38,7 @@ contract Deploy is Script {
         IAutomationRegistryInterface REGISTRY = IAutomationRegistryInterface(0x819B58A646CDd8289275A87653a2aA4902b14fe6);
         string memory _ADMINEMAIL = "okeolamobolaji19@gmail.com";
         uint32 _GASLIMIT = 999999;
-        uint96 _AMOUNT = 10000000000000000000;
+        uint96 _AMOUNT = 20000000000000000000;
         address _ADMINADDRESS = 0xF8489730751cE4a62ad99ab88F15211B9F027C9e;
 
         dAuction = new Auction(address(dAuthorization), address(dAuctionNFT), _TEAMWALLET, LINK, REGISTRAR, REGISTRY, _ADMINEMAIL, _GASLIMIT, _AMOUNT, _ADMINADDRESS);
