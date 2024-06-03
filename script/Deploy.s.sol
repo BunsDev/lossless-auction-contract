@@ -37,7 +37,7 @@ contract Deploy is Script {
         IAutomationRegistrarInterface REGISTRAR = IAutomationRegistrarInterface(0xD23D3D1b81711D75E1012211f1b65Cc7dBB474e2);
         IAutomationRegistryInterface REGISTRY = IAutomationRegistryInterface(0x819B58A646CDd8289275A87653a2aA4902b14fe6);
         string memory _ADMINEMAIL = "okeolamobolaji19@gmail.com";
-        uint32 _GASLIMIT = 999999;
+        uint32 _GASLIMIT = 500000;
         uint96 _AMOUNT = 20000000000000000000;
         address _ADMINADDRESS = 0xF8489730751cE4a62ad99ab88F15211B9F027C9e;
 
