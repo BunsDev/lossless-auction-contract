@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 import "./AppLibrary.sol";
 import "./AuctionLibrary.sol";
@@ -54,7 +54,7 @@ library ChainlinkLibrary {
 
     function approveRegistrar(uint256 _amount, AppLibrary.Layout storage layout) external {
         if(msg.sender != layout.owner)revert ONLY_OWNER();
-        
+
         layout.i_link.approve(address(layout.i_registrar), _amount);
     }
 
